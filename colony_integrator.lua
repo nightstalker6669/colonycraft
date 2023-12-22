@@ -36,4 +36,11 @@ function ColonyIntegrator.getBuilderData(integratorPeripheral)
     return builderData
 end
 
+-- Import new modules for handling specific details about the colony
+local Alerts = require "colony_integrator/alerts"
+local Happiness = require "colony_integrator/happiness"
+
+ColonyIntegrator.getAlerts = Alerts.getColonyAlerts
+ColonyIntegrator.getHappiness = Happiness.getColonyHappiness
+
 return ColonyIntegrator
