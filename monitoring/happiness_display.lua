@@ -1,5 +1,3 @@
-local monitorManager = require "monitor_manager"
-
 local HappinessDisplay = {}
 
 function HappinessDisplay.displayHappiness(monitor, happiness)

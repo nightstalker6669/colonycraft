@@ -1,5 +1,3 @@
-local monitorManager = require "monitor_manager"
-
 local AlertDisplay = {}
 
 function AlertDisplay.displayAlerts(monitor, alerts)
