@@ -14,15 +14,20 @@ function application.main()
         -- Check and update crafting queue
         inventoryManager.checkAndCraftItems()
 
-        -- Get updated builder data
+        -- Gather colony information for the display
         local builderData = ColonyIntegrator.getBuilderData(integrator)
-        local craftingIssues = inventoryManager.getCraftingIssues() -- get crafting issues
+        local alerts = ColonyIntegrator.getAlerts(integrator) -- INPUT_REQUIRED {Assumed alerts retrieval method}
+        local happiness = ColonyIntegrator.getHappiness(integrator) -- INPUT_REQUIRED {Assumed happiness retrieval method}
+        local craftingIssues = inventoryManager.getCraftingIssues()
+        
+        local colonyInformation = {builderData, alerts, happiness}
 
-        -- Display builder data, crafting queue status, and crafting issues
-        monitorManager.setupMonitor(monitor)
-        monitorManager.displayBuilderInfo(monitor, builderData)
+        -- Display Colony Information
+        monitorManager.displayColonyInformation(monitor, colonyInformation)
+
+        -- Display crafting queue status and crafting issues
         CraftingMonitor.displayCraftingQueue(monitor, inventoryManager.getCraftingQueue())
-        monitorManager.displayCraftingIssues(monitor, craftingIssues) -- display crafting issues
+        monitorManager.displayCraftingIssues(monitor, craftingIssues)
         
         -- Wait for a short duration before refreshing the data
         os.sleep(5)

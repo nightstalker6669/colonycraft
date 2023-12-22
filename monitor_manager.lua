@@ -2,6 +2,9 @@
 local monitorManager = {}
 local monitorPeripheralType = "monitor"
 
+local AlertDisplay = require "monitoring/alert_display"
+local HappinessDisplay = require "monitoring/happiness_display"
+
 function monitorManager.findMonitor()
     local monitorPeripheral = peripheral.find(monitorPeripheralType)
     if not monitorPeripheral then
@@ -29,6 +32,25 @@ function monitorManager.displayBuilderInfo(monitorPeripheral, builderData)
             line = line + 1
         end
     end
+end
+
+function monitorManager.displayColonyInformation(monitorPeripheral, colonyInformation)
+    local builderData, alerts, happiness = table.unpack(colonyInformation)
+
+    -- Set up the monitor for display
+    monitorManager.setupMonitor(monitorPeripheral)
+    
+    -- Display Builder Information
+    monitorManager.displayBuilderInfo(monitorPeripheral, builderData)
+    
+    -- Display Alerts
+    AlertDisplay.displayAlerts(monitorPeripheral, alerts)
+    
+    -- Display Happiness
+    -- Calculate display start line based on the number of builders.
+    local happinessStartLine = #builderData * 2 + 3
+    monitorPeripheral.setCursorPos(1, happinessStartLine)
+    HappinessDisplay.displayHappiness(monitorPeripheral, happiness)
 end
 
 function monitorManager.displayCraftingIssues(monitorPeripheral, craftingIssues)
