@@ -2,12 +2,21 @@
 
 ## Overview
 
-**Colonycraft** is a colony management application designed for the **Minecolonies** mod in Minecraft, utilizing Lua scripting with the **CC:Tweaked** mod. The application interfaces with Minecolonies via the Colony Integrator provided by the **Advanced Peripherals** mod and navigates the **Applied Energistics 2 (AE2)** system using the ME Bridge block.
+**Colonycraft** is a colony management application designed for the **Minecolonies** mod in Minecraft, utilizing Lua scripting with the **CC:Tweaked** mod. The application interfaces with Minecolonies through the Advanced Peripherals **Colony Integrator** block and manages the **Applied Energistics 2 (AE2)** system via the ME Bridge block.
 
-The application achieves several automation goals:
-- Automating the discovery and management of materials required by the Minecolonies builders.
-- Overseeing builders' assignment to construction tasks and the status of those tasks.
-- Displaying relevant information through an in-game monitor interface and responding to shortages by crafting necessary items.
+The application's functionality includes:
+- Discovering and managing materials for Minecolonies builders.
+- Monitoring builders' assignments and task progressions.
+- Automating the crafting process for needed materials.
+- Providing a user interface on an in-game monitor.
+
+## Features
+
+Users of Colonycraft can expect the following features:
+- **Material Management**: Automatic detection and crafting of low-stock items for the colony's builders.
+- **Builder Monitoring**: Display of assigned builders, their tasks, and required construction materials.
+- **Crafting Automation**: If necessary items are craftable and in short supply, the system will automatically instruct the ME system to craft them and export to a designated chest.
+- **Interactive Display**: Users can view builder statuses and interact with the display to review specific details.
 
 ## User Stories
 
@@ -15,11 +24,11 @@ The application achieves several automation goals:
 
 ## Technologies
 
-- Applied Energistics 2
+- Minecraft
 - CC:Tweaked
 - Advanced Peripherals
+- Applied Energistics 2
 - Minecolonies
-- Minecraft
 
 ## File Structure
 
@@ -33,24 +42,32 @@ The application achieves several automation goals:
 - `monitoring/crafting_monitor.lua`: Monitors the crafting queue and provides display capabilities.
 - `utils/queue.lua`: Provides queue data structure implementation.
 
-## Setup
+## Installation and Setup
 
-1. Ensure the required mods are installed in Minecraft.
-2. Place the Lua scripts in the computer's directory provided by CC:Tweaked.
-3. Reboot the in-game computer to execute the `startup/startup.lua` and initialize the system.
+To integrate Colonycraft into your Minecraft experience:
+1. Install the required mods: CC:Tweaked, Advanced Peripherals, Applied Energistics 2, and Minecolonies.
+2. Copy the Colonycraft Lua scripts into the computer provided by CC:Tweaked within Minecraft.
+3. Restart the in-game computer to run the `startup/startup.lua` which initializes the application.
 
-## Contribution Guidelines
+## Usage
 
-1. Fork this repository.
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -am 'Add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
+Once installed, the app will display information on a monitor in Minecraft for real-time management. For additional functionality and detailed interactions:
+- Refer to the `application.lua` for interface operations.
+- Use `inventory_manager.lua` and `me_bridge.lua` to manage automated crafting.
+
+## Contributing
+
+We welcome contributions from the community. Please follow these steps to contribute:
+1. Fork the repository.
+2. Create your feature branch (`git checkout -b feature/YourFeatureName`).
+3. Commit your changes (`git commit -m 'Add some YourFeatureName'`).
+4. Push the feature branch to your repository (`git push origin feature/YourFeatureName`).
+5. Submit a pull request to the original repository.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+This project is licensed under the MIT License - see the `LICENSE` file for details.
 
 ## Support
 
-For support, please open an issue or contact the project maintainers.
+Should you need assistance or encounter issues, please submit an issue on the project's issues page or reach out to the project maintainers.
